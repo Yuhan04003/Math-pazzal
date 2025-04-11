@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IQ Booster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #667eea, #764ba2);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      flex-direction: column;
+    }
+
+    .ad-section {
+      margin: 20px 0;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .app-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+
+    .question {
+      font-size: 20px;
+      margin: 20px 0;
+      color: #444;
+    }
+
+    input[type="text"] {
+      padding: 12px;
+      width: 80px;
+      font-size: 18px;
+      text-align: center;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 16px;
+      background-color: #667eea;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #5a67d8;
+    }
+
+    .points {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #222;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top In-feed Ad -->
+  <div class="ad-section">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2185023385651117" crossorigin="anonymous"></script>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-ef+6k-30-ac+ty"
+         data-ad-client="ca-pub-2185023385651117"
+         data-ad-slot="6456874359"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+
+  <!-- Main App -->
+  <div class="app-container">
+    <h1>IQ Booster</h1>
+    <div class="question" id="question">(15 / 3) + 2 - 2 = ?</div>
+    <input type="text" id="answer" placeholder="Answer">
+    <br>
+    <button onclick="checkAnswer()">Solve</button>
+    <div class="points" id="points">Points: 0</div>
+
+    <!-- Hidden Display Ad -->
+    <div id="displayAd" style="display: none; margin-top: 20px;">
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2185023385651117" crossorigin="anonymous"></script>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2185023385651117"
+           data-ad-slot="1669012722"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+  </div>
+
+  <!-- Bottom In-feed Ad -->
+  <div class="ad-section">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2185023385651117" crossorigin="anonymous"></script>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-ef+6k-30-ac+ty"
+         data-ad-client="ca-pub-2185023385651117"
+         data-ad-slot="6456874359"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+
+  <script>
+    let points = 0;
+
+    const questions = [
+      { question: "(15 / 3) + 2 - 2 = ?", answer: "5" },
+      { question: "(10 * 2) / 4 + 1 = ?", answer: "5" },
+      { question: "(3 * 5) - 10 = ?", answer: "5" },
+      { question: "(7 + 3) * 2 / 4 = ?", answer: "5" },
+      { question: "(18 / 3) - (2 + 1) = ?", answer: "5" }
+    ];
+
+    let currentQuestionIndex = 0;
+
+    function showNextQuestion() {
+      currentQuestionIndex++;
+      if (currentQuestionIndex >= questions.length) {
+        currentQuestionIndex = 0;
+      }
+      document.getElementById("question").innerText = questions[currentQuestionIndex].question;
+    }
+
+    function checkAnswer() {
+      const userInput = document.getElementById("answer").value.trim();
+      if (userInput === questions[currentQuestionIndex].answer) {
+        points++;
+        alert("Correct! +1 Point");
+      } else {
+        alert("Wrong Answer. Try again!");
+      }
+      document.getElementById("points").innerText = "Points: " + points;
+      document.getElementById("answer").value = "";
+      showNextQuestion();
+
+      // Show display ad
+      document.getElementById("displayAd").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
